@@ -1,8 +1,10 @@
 plugins {
     application
-    kotlin("jvm") version "1.8.0" // Kotlin plugin included here
+    kotlin("jvm") version "1.8.0"
+    id("checkstyle") // no version specified here
 }
 
+// Application configuration
 application {
     mainClass.set("hexlet.code.App")
 }
@@ -27,4 +29,10 @@ tasks.test {
 
 tasks.getByName<JavaExec>("run") {
     standardInput = System.`in`
+}
+
+// Checkstyle configuration
+checkstyle {
+    // toolVersion = "10.8" // Remove this line or comment it out
+    configFile = file("config/checkstyle/checkstyle.xml")
 }
