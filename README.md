@@ -14,3 +14,6 @@ Instructions on how to build and run the project.
 
 See Calc game played asciinema by following this link:
 https://asciinema.org/a/WuEDvYvmcw3lrffqmdq5obPz6
+
+See GCD game played asciinema by following this link:
+https://asciinema.org/a/x4TLm2aSzYF9cMCSPgrjuokWQ

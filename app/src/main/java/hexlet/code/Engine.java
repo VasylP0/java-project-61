@@ -3,7 +3,6 @@ package hexlet.code;
 import java.util.Scanner;
 
 public class Engine {
-
     public static final int ROUNDS = 3;
 
     public static void playGame(String[][] roundsData, String gameDescription) {
@@ -27,7 +26,7 @@ public class Engine {
             } else {
                 System.out.println("'" + playerAnswer + "' is wrong "
                         +
-                        "answer ;" + "(. Correct answer was '" + correctAnswer + "'.");
+                        "answer ;(. Correct answer was '" + correctAnswer + "'.");
                 System.out.println("Let's try again, " + playerName + "!");
                 return;
             }
@@ -35,4 +34,3 @@ public class Engine {
         System.out.println("Congratulations, " + playerName + "!");
     }
 }
-
