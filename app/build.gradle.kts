@@ -6,7 +6,7 @@ plugins {
 
 // Application configuration
 application {
-    mainClass.set("hexlet.code.App")
+    mainClass.set("hexlet.code.App") // Ensure this class exists
 }
 
 group = "hexlet.code"
@@ -31,8 +31,17 @@ tasks.getByName<JavaExec>("run") {
     standardInput = System.`in`
 }
 
+// The Jar task
+tasks.named<Jar>("jar") {
+    archiveBaseName.set("app") // Change "app" to your preferred name
+}
+
+// Install Dist configuration (removing the unnecessary Copy task)
+tasks.named("installDist") {
+    dependsOn(tasks.named("assemble"))
+}
+
 // Checkstyle configuration
 checkstyle {
-    // toolVersion = "10.8" // Remove this line or comment it out
     configFile = file("config/checkstyle/checkstyle.xml")
 }
