@@ -1,6 +1,9 @@
 package hexlet.code;
 
 import hexlet.code.games.Gcd;
+import hexlet.code.games.Progression;  // Import the Progression game class
+import hexlet.code.games.Calc;         // Import the Calc game class
+import hexlet.code.games.EvenGame;     // Import the Even game class
 import java.util.Scanner;
 
 public class App {
@@ -11,15 +14,17 @@ public class App {
         System.out.println("2 - Even");
         System.out.println("3 - Calc");
         System.out.println("4 - GCD");
+        System.out.println("5 - Progression");  // Add the Progression game option
         System.out.println("0 - Exit");
         System.out.print("Your choice: ");
         int choice = scanner.nextInt();
 
         switch (choice) {
             case 1 -> greet();
-            case 2 -> playEven();
-            case 3 -> playCalc();
-            case 4 -> Gcd.playGCDGame();  // Call the GCD game
+            case 2 -> EvenGame.startGame();  // Call the Even game
+            case 3 -> Calc.startGame();      // Call the Calc game
+            case 4 -> Gcd.startGame();       // Call the GCD game
+            case 5 -> Progression.startGame(); // Call the Progression game
             case 0 -> System.out.println("Exit");
             default -> System.out.println("Invalid choice");
         }
@@ -27,13 +32,5 @@ public class App {
 
     public static void greet() {
         System.out.println("Welcome to the Brain Games!");
-    }
-
-    public static void playEven() {
-        // Even game logic
-    }
-
-    public static void playCalc() {
-        // Calc game logic
     }
 }

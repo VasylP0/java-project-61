@@ -1,36 +1,24 @@
 package hexlet.code.games;
 
-import java.util.Scanner;
+import hexlet.code.Engine;
+import java.util.Random;
 
 public class EvenGame {
-    public static void play() {
-        System.out.println("Welcome to the Even Game!");
+    public static final String DESCRIPTION = "Answer 'yes' if the number is even, otherwise answer 'no'.";
 
-        Scanner scanner = new Scanner(System.in);
-        String playerName;
+    public static void startGame() {
+        Random random = new Random();
+        String[][] roundsData = new String[Engine.ROUNDS][2]; // Prepare for multiple rounds
 
-        System.out.print("May I have your name? ");
-        playerName = scanner.nextLine();
-        System.out.println("Hello, " + playerName + "!");
+        for (int i = 0; i < Engine.ROUNDS; i++) {
+            int number = random.nextInt(100); // Random number between 0 and 99
+            String question = String.valueOf(number);
+            String correctAnswer = (number % 2 == 0) ? "yes" : "no"; // Determine if the number is even
 
-        for (int i = 0; i < 3; i++) {
-            // Example game logic to check even number
-            int number = (int) (Math.random() * 100);
-            System.out.println("Question: " + number);
-            System.out.print("Your answer: ");
-            String answer = scanner.nextLine();
-
-            boolean isEven = number % 2 == 0;
-            if ((isEven && answer.equals("yes")) || (!isEven && answer.equals("no"))) {
-                System.out.println("Correct!");
-            } else {
-                System.out.println("'" + answer + "' is wrong "
-                        +
-                        "answer ;" + "(. Correct answer was '" + (isEven ? "yes" : "no") + "'.");
-                System.out.println("Let's try again, " + playerName + "!");
-                return;
-            }
+            roundsData[i][0] = question; // Store the question
+            roundsData[i][1] = correctAnswer; // Store the correct answer
         }
-        System.out.println("Congratulations, " + playerName + "!");
+
+        Engine.playGame(roundsData, DESCRIPTION); // Play the game using the Engine
     }
 }

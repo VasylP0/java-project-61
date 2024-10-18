@@ -1,12 +1,11 @@
 plugins {
     application
     kotlin("jvm") version "1.8.0"
-    id("checkstyle") // no version specified here
+    id("checkstyle")
 }
 
-// Application configuration
 application {
-    mainClass.set("hexlet.code.App") // Ensure this class exists
+    mainClass.set("hexlet.code.App") // Ensure this class exists and is correct
 }
 
 group = "hexlet.code"
@@ -31,12 +30,12 @@ tasks.getByName<JavaExec>("run") {
     standardInput = System.`in`
 }
 
-// The Jar task
+// The Jar task configuration
 tasks.named<Jar>("jar") {
     archiveBaseName.set("app") // Change "app" to your preferred name
 }
 
-// Install Dist configuration (removing the unnecessary Copy task)
+// Install Dist configuration (no unnecessary tasks)
 tasks.named("installDist") {
     dependsOn(tasks.named("assemble"))
 }

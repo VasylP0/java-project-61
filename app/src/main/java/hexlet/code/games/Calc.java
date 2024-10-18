@@ -1,40 +1,27 @@
 package hexlet.code.games;
 
-import java.util.Scanner;
+import hexlet.code.Engine;
+import java.util.Random;
 
 public class Calc {
-    public static void play() {
-        System.out.println("Welcome to the Calculator Game!");
+    public static final String DESCRIPTION = "What is the result of the expression?";
 
-        Scanner scanner = new Scanner(System.in);
-        String playerName;
+    public static void startGame() {
+        Random random = new Random();
+        String[][] roundsData = new String[Engine.ROUNDS][2]; // Prepare for multiple rounds
 
-        System.out.print("May I have your name? ");
-        playerName = scanner.nextLine();
-        System.out.println("Hello, " + playerName + "!");
+        for (int i = 0; i < Engine.ROUNDS; i++) {
+            int number1 = random.nextInt(50); // Random number between 0 and 49
+            int number2 = random.nextInt(50); // Random number between 0 and 49
+            char operator = getRandomOperator(); // Get a random operator
+            int correctAnswer = calculate(number1, number2, operator); // Calculate the correct answer
 
-        for (int i = 0; i < 3; i++) {
-            // Example game logic for random calculations
-            int number1 = (int) (Math.random() * 50);
-            int number2 = (int) (Math.random() * 50);
-            char operator = getRandomOperator();
-            int correctAnswer = calculate(number1, number2, operator);
-
-            System.out.println("Question: " + number1 + " " + operator + " " + number2);
-            System.out.print("Your answer: ");
-            int userAnswer = scanner.nextInt();
-
-            if (userAnswer == correctAnswer) {
-                System.out.println("Correct!");
-            } else {
-                System.out.println("'" + userAnswer + "' is wrong "
-                        +
-                        "answer ;" + "(. Correct answer was '" + correctAnswer + "'.");
-                System.out.println("Let's try again, " + playerName + "!");
-                return;
-            }
+            String question = number1 + " " + operator + " " + number2;
+            roundsData[i][0] = question; // Store the question
+            roundsData[i][1] = String.valueOf(correctAnswer); // Store the correct answer
         }
-        System.out.println("Congratulations, " + playerName + "!");
+
+        Engine.playGame(roundsData, DESCRIPTION); // Play the game using the Engine
     }
 
     // Utility methods
