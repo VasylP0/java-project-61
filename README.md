@@ -17,3 +17,9 @@ https://asciinema.org/a/WuEDvYvmcw3lrffqmdq5obPz6
 
 See GCD game played asciinema by following this link:
 https://asciinema.org/a/x4TLm2aSzYF9cMCSPgrjuokWQ
+
+See Progression game played asciinema by following this link:
+https://asciinema.org/a/RmfQg2wtEIBv7Vw692OR904EX
+
+See Prime game played asciime,a by following this link:
+https://asciinema.org/a/ZODiB7moI7UVbC3GCzMCyFNX2
