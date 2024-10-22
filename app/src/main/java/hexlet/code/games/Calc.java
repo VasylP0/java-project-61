@@ -1,18 +1,17 @@
 package hexlet.code.games;
 
 import hexlet.code.Engine;
-import java.util.Random;
+import hexlet.code.Utils;
 
 public class Calc {
     public static final String DESCRIPTION = "What is the result of the expression?";
 
     public static void startGame() {
-        Random random = new Random();
         String[][] roundsData = new String[Engine.ROUNDS][2]; // Prepare for multiple rounds
 
         for (int i = 0; i < Engine.ROUNDS; i++) {
-            int number1 = random.nextInt(50); // Random number between 0 and 49
-            int number2 = random.nextInt(50); // Random number between 0 and 49
+            int number1 = Utils.getRandomInt(0, 50); // Use Utils for random number
+            int number2 = Utils.getRandomInt(0, 50); // Use Utils for random number
             char operator = getRandomOperator(); // Get a random operator
             int correctAnswer = calculate(number1, number2, operator); // Calculate the correct answer
 
@@ -27,7 +26,7 @@ public class Calc {
     // Utility methods
     private static char getRandomOperator() {
         char[] operators = {'+', '-', '*'};
-        return operators[(int) (Math.random() * operators.length)];
+        return operators[Utils.getRandomInt(0, operators.length - 1)]; // Use Utils for random operator
     }
 
     private static int calculate(int number1, int number2, char operator) {

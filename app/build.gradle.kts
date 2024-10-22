@@ -1,7 +1,6 @@
 plugins {
     application
-    kotlin("jvm") version "1.8.0"
-    id("checkstyle")
+    id("checkstyle") // Keeping Checkstyle plugin
 }
 
 application {
@@ -16,7 +15,7 @@ repositories {
 }
 
 dependencies {
-    implementation(kotlin("stdlib")) // Kotlin standard library
+    // Define your Java dependencies here
 
     testImplementation(platform("org.junit:junit-bom:5.10.0"))
     testImplementation("org.junit.jupiter:junit-jupiter")

@@ -1,19 +1,18 @@
 package hexlet.code.games;
 
 import hexlet.code.Engine;
-import java.util.Random;
+import hexlet.code.Utils;
 
 public class EvenGame {
     public static final String DESCRIPTION = "Answer 'yes' if the number is even, otherwise answer 'no'.";
 
     public static void startGame() {
-        Random random = new Random();
         String[][] roundsData = new String[Engine.ROUNDS][2]; // Prepare for multiple rounds
 
         for (int i = 0; i < Engine.ROUNDS; i++) {
-            int number = random.nextInt(100); // Random number between 0 and 99
+            int number = Utils.getRandomInt(0, 100); // Use Utils for random number
             String question = String.valueOf(number);
-            String correctAnswer = (number % 2 == 0) ? "yes" : "no"; // Determine if the number is even
+            String correctAnswer = Utils.isEven(number) ? "yes" : "no"; // Use Utils for even check
 
             roundsData[i][0] = question; // Store the question
             roundsData[i][1] = correctAnswer; // Store the correct answer
