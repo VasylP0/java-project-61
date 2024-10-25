@@ -38,7 +38,7 @@ public class App {
                 System.out.println("User selected: " + choice);
 
                 switch (choice) {
-                    case 1 -> greet();  // Call greet method
+                    case 1 -> Cli.greetUser();  // Call greetUser without parameters
                     case 2 -> EvenGame.startGame();
                     case 3 -> Calc.startGame();
                     case 4 -> Gcd.startGame();
@@ -58,11 +58,5 @@ public class App {
 
         System.out.println("Brain Games application finished.");
         scanner.close();
-    }
-
-    public static void greet() {
-        // Detect if running in CI (GitHub Actions) environment
-        boolean isTestMode = "true".equals(System.getenv("CI")) || "true".equals(System.getenv("TEST_MODE"));
-        Cli.greetUser(isTestMode);
     }
 }
