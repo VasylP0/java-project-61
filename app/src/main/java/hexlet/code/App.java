@@ -61,7 +61,8 @@ public class App {
     }
 
     public static void greet() {
-        boolean isTestMode = "true".equals(System.getenv("TEST_MODE"));
+        // Detect if running in CI (GitHub Actions) environment
+        boolean isTestMode = "true".equals(System.getenv("CI")) || "true".equals(System.getenv("TEST_MODE"));
         Cli.greetUser(isTestMode);
     }
 }
