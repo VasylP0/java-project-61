@@ -26,12 +26,19 @@ public class App {
             System.out.println("0 - Exit");
             System.out.print("Your choice: ");
 
-            if (scanner.hasNextInt()) {
-                int choice = scanner.nextInt();
-                System.out.println("User selected: " + choice);  // Debug: Log user input
+            String input = scanner.nextLine().trim();  // Read the entire line and trim whitespace
+
+            if (input.isEmpty()) {
+                System.out.println("No input provided, please enter a valid game number.");
+                continue;
+            }
+
+            try {
+                int choice = Integer.parseInt(input);  // Parse the input as an integer
+                System.out.println("User selected: " + choice);
 
                 switch (choice) {
-                    case 1 -> Cli.greetUser();  // Call Cli to greet the user
+                    case 1 -> greet();  // Call greet method
                     case 2 -> EvenGame.startGame();
                     case 3 -> Calc.startGame();
                     case 4 -> Gcd.startGame();
@@ -43,14 +50,18 @@ public class App {
                     }
                     default -> System.out.println("Invalid choice, please try again.");
                 }
-            } else {
-                // Handle invalid input scenario
+            } catch (NumberFormatException e) {
+                // Handle the case where input is not a valid integer
                 System.out.println("Invalid input, please enter a valid game number.");
-                scanner.next(); // Clear the invalid input
             }
         }
 
         System.out.println("Brain Games application finished.");
         scanner.close();
+    }
+
+    public static void greet() {
+        boolean isTestMode = "true".equals(System.getenv("TEST_MODE"));
+        Cli.greetUser(isTestMode);
     }
 }
