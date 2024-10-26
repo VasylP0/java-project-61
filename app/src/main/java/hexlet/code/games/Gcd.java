@@ -1,29 +1,31 @@
+// Gcd.java
 package hexlet.code.games;
 
 import hexlet.code.Engine;
-import hexlet.code.Utils;
+import java.util.Random;
 
 public class Gcd {
-    public static final String DESCRIPTION = "Find the greatest common divisor of given numbers.";
+    private static final String RULES = "Find the greatest common divisor of given numbers.";
+    private static final int FACTOR = 100;
 
-    public static void startGame() {
-        String[][] roundsData = new String[Engine.ROUNDS][2];
+    public static void play() {
+        String[][] questionsAndAnswers = new String[Engine.ROUNDS][2];
+        Random random = new Random();
 
         for (int i = 0; i < Engine.ROUNDS; i++) {
-            int number1 = Utils.getRandomInt(1, 100); // Use Utils for random number
-            int number2 = Utils.getRandomInt(1, 100); // Use Utils for random number
+            int firstNumber = random.nextInt(FACTOR) + 1;
+            int secondNumber = random.nextInt(FACTOR) + 1;
+            String question = firstNumber + " " + secondNumber;
+            String correctAnswer = Integer.toString(findGcd(firstNumber, secondNumber));
 
-            String question = number1 + " " + number2;
-            String correctAnswer = String.valueOf(gcd(number1, number2));
-
-            roundsData[i][0] = question;
-            roundsData[i][1] = correctAnswer;
+            questionsAndAnswers[i][0] = question;
+            questionsAndAnswers[i][1] = correctAnswer;
         }
 
-        Engine.playGame(roundsData, DESCRIPTION);
+        Engine.playGame(questionsAndAnswers, RULES);
     }
 
-    private static int gcd(int a, int b) {
+    private static int findGcd(int a, int b) {
         while (b != 0) {
             int temp = b;
             b = a % b;

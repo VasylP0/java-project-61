@@ -1,35 +1,34 @@
+// Progression.java
 package hexlet.code.games;
 
 import hexlet.code.Engine;
-import hexlet.code.Utils;
+import java.util.Random;
 
 public class Progression {
-    public static final String DESCRIPTION = "What number is missing in the progression?";
+    private static final String RULES = "What number is missing in the progression?";
+    private static final int PROGRESSION_LENGTH = 10;
+    private static final int FACTOR = 100;
 
-    public static void startGame() {
-        String[][] roundsData = new String[Engine.ROUNDS][2]; // Prepare for multiple rounds
+    public static void play() {
+        String[][] questionsAndAnswers = new String[Engine.ROUNDS][2];
+        Random random = new Random();
 
         for (int i = 0; i < Engine.ROUNDS; i++) {
-            int length = Utils.getRandomInt(5, 10); // Use Utils for random length
-            int start = Utils.getRandomInt(0, 10); // Use Utils for random start
-            int step = Utils.getRandomInt(1, 5); // Use Utils for random step
+            int start = random.nextInt(FACTOR);
+            int step = random.nextInt(10) + 1;
+            int hiddenIndex = random.nextInt(PROGRESSION_LENGTH);
 
-            String[] progression = new String[length];
-            for (int j = 0; j < length; j++) {
-                progression[j] = String.valueOf(start + step * j);
+            String[] progression = new String[PROGRESSION_LENGTH];
+            for (int j = 0; j < PROGRESSION_LENGTH; j++) {
+                progression[j] = Integer.toString(start + j * step);
             }
 
-            int hiddenIndex = Utils.getRandomInt(0, length - 1); // Use Utils for hidden index
-            String hiddenNumber = progression[hiddenIndex];
-            progression[hiddenIndex] = ".."; // Replace the number with two dots
-
-            String question = String.join(" ", progression);
-            String correctAnswer = hiddenNumber;
-
-            roundsData[i][0] = question;
-            roundsData[i][1] = correctAnswer;
+            String correctAnswer = progression[hiddenIndex];
+            progression[hiddenIndex] = "..";
+            questionsAndAnswers[i][0] = String.join(" ", progression);
+            questionsAndAnswers[i][1] = correctAnswer;
         }
 
-        Engine.playGame(roundsData, DESCRIPTION);
+        Engine.playGame(questionsAndAnswers, RULES);
     }
 }
