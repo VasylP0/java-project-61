@@ -4,7 +4,7 @@ import hexlet.code.Engine;
 import java.util.Random;
 
 public class Prime {
-    private static final String RULES = "Answer 'yes' if the number is prime, otherwise answer 'no'.";
+    private static final String RULES = "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
     private static final int FACTOR_FOR_NUMBER = 100;
 
     public static void findPrime() {
