@@ -10,10 +10,15 @@ import java.util.Scanner;
 
 public class App {
     public static void main(String[] args) {
-        while (true) {
+        runApp();
+    }
+
+    public static void runApp() {
+        boolean running = true;
+        Scanner scanner = new Scanner(System.in);
+
+        while (running) {
             openMenu();
-            Scanner scanner = new Scanner(System.in);
-            System.out.print("Your choice: ");
             String choice = scanner.next();
 
             switch (choice) {
@@ -25,14 +30,19 @@ public class App {
                 case "6" -> Prime.play();
                 case "0" -> {
                     System.out.println("Exiting the program. Goodbye!");
-                    return;
+                    running = false;
                 }
                 default -> System.out.println("Invalid choice. Please enter a valid game number.");
+            }
+
+            // If a game or greeting runs, return to menu afterward
+            if (!choice.equals("0")) {
+                System.out.println(); // For spacing before reopening the menu
             }
         }
     }
 
-    private static void openMenu() {
+    public static void openMenu() {
         System.out.println("Please enter the game number and press Enter:");
         System.out.println("1 - Greet");
         System.out.println("2 - Even");
@@ -41,5 +51,6 @@ public class App {
         System.out.println("5 - Progression");
         System.out.println("6 - Prime");
         System.out.println("0 - Exit");
+        System.out.print("Your choice: ");
     }
 }
