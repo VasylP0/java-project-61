@@ -1,46 +1,45 @@
 // App.java
 package hexlet.code;
 
+import hexlet.code.games.Calculator;
 import hexlet.code.games.Even;
-// Import other games here (Calc, Gcd, Progression, Prime)
+import hexlet.code.games.Gcd;
+import hexlet.code.games.Progression;
+import hexlet.code.games.Prime;
 import java.util.Scanner;
 
 public class App {
     public static void main(String[] args) {
-        displayMenu();
-    }
+        while (true) {
+            openMenu();
+            Scanner scanner = new Scanner(System.in);
+            System.out.print("Your choice: ");
+            String choice = scanner.next();
 
-    public static void displayMenu() {
-        System.out.println("""
-                Please enter the game number and press Enter
-                1 - Greet
-                2 - Even
-                3 - Calc
-                4 - GCD
-                5 - Progression
-                6 - Prime
-                0 - Exit""");
-        chooseGame();
-    }
-
-    public static void chooseGame() {
-        Scanner scanner = new Scanner(System.in);
-        String choice = scanner.next();
-
-        switch (choice) {
-            case "1" -> greet();
-            case "2" -> Even.play();
-            // Add other cases here for Calc, GCD, etc.
-            case "0" -> System.out.println("Goodbye!");
-            default -> System.out.println("Invalid choice. Please enter a valid game number.");
+            switch (choice) {
+                case "1" -> Greetings.greet();
+                case "2" -> Even.play();
+                case "3" -> Calculator.play();
+                case "4" -> Gcd.play();
+                case "5" -> Progression.play();
+                case "6" -> Prime.play();
+                case "0" -> {
+                    System.out.println("Exiting the program. Goodbye!");
+                    return;
+                }
+                default -> System.out.println("Invalid choice. Please enter a valid game number.");
+            }
         }
     }
 
-    public static void greet() {
-        System.out.println("Welcome to the Brain Games!");
-        System.out.print("May I have your name? ");
-        Scanner scanner = new Scanner(System.in);
-        String name = scanner.nextLine();
-        System.out.println("Hello, " + name + "!");
+    private static void openMenu() {
+        System.out.println("Please enter the game number and press Enter:");
+        System.out.println("1 - Greet");
+        System.out.println("2 - Even");
+        System.out.println("3 - Calc");
+        System.out.println("4 - GCD");
+        System.out.println("5 - Progression");
+        System.out.println("6 - Prime");
+        System.out.println("0 - Exit");
     }
 }
