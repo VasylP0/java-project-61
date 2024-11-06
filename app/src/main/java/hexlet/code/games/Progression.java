@@ -1,4 +1,5 @@
 package hexlet.code.games;
+import hexlet.code.Utils;
 
 import hexlet.code.Engine;
 import java.util.Random;
@@ -14,8 +15,8 @@ public class Progression {
         String[][] questionAnswer = new String[Engine.ROUNDS][2];
         Random random = new Random();
         for (int i = 0; i < Engine.ROUNDS; i++) {
-            int start = random.nextInt(MAX_START);
-            int step = random.nextInt(MAX_STEP) + 1;
+            int start = Utils.getRandomInt(0, MAX_START);
+            int step = Utils.getRandomInt(1, MAX_STEP);
             int length = MIN_LENGTH + random.nextInt(MAX_LENGTH - MIN_LENGTH + 1);
             int hiddenIndex = random.nextInt(length);
             String[] progression = createProgression(start, step, length);

@@ -5,45 +5,6 @@ import java.util.Scanner;
 public class Engine {
 
     public static final int ROUNDS = 3;
-
-    /**
-     * Runs the game engine with the specified rules and question-answer generator.
-     *
-     * @param gameName      The name of the game.
-     * @param rules         The rules of the game to display at the start.
-     * @param questionAndAnswerGenerator A lambda function or method reference that returns a
-     *                                   question-answer pair in a String array (index 0 is question, 1 is answer).
-     */
-    public static void runGame(String gameName, String rules,
-                               QuestionAnswerGenerator questionAndAnswerGenerator) {
-        System.out.println("Welcome to the Brain Games!");
-        System.out.println("May I have your name?");
-        Scanner scanner = new Scanner(System.in);
-        String userName = scanner.nextLine();
-        System.out.println("Hello, " + userName + "!");
-        System.out.println(rules);
-
-        for (int i = 0; i < ROUNDS; i++) {
-            String[] questionAndAnswer = questionAndAnswerGenerator.generate();
-            String question = questionAndAnswer[0];
-            String correctAnswer = questionAndAnswer[1];
-
-            System.out.println("Question: " + question);
-            System.out.print("Your answer: ");
-            String userAnswer = scanner.nextLine();
-
-            if (!userAnswer.equals(correctAnswer)) {
-                System.out.println("'" + userAnswer + "' is wrong answer ;(. "
-                        + "Correct answer was '" + correctAnswer + "'.");
-                System.out.println("Let's try again, " + userName + "!");
-                return;
-            }
-            System.out.println("Correct!");
-        }
-
-        System.out.println("Congratulations, " + userName + "!");
-    }
-
     /**
      * A convenient method to run any game with predefined questions and rules.
      *
@@ -74,6 +35,7 @@ public class Engine {
             }
             System.out.println("Correct!");
         }
+
 
         System.out.println("Congratulations, " + userName + "!");
     }

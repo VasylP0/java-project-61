@@ -1,4 +1,5 @@
 package hexlet.code.games;
+import hexlet.code.Utils;
 
 import hexlet.code.Engine;
 import java.util.Random;
@@ -11,7 +12,7 @@ public class Prime {
         String[][] questionAnswer = new String[Engine.ROUNDS][2];
         Random random = new Random();
         for (int i = 0; i < Engine.ROUNDS; i++) {
-            int number = random.nextInt(FACTOR_FOR_NUMBER);
+            int number = Utils.getRandomInt(0, FACTOR_FOR_NUMBER);
             String correctAnswer = isPrime(number) ? "yes" : "no";
             questionAnswer[i][0] = String.valueOf(number);
             questionAnswer[i][1] = correctAnswer;
